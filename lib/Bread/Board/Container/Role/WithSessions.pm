@@ -28,7 +28,7 @@ sub flush_session_instances {
             next unless any { $service->lifecycle eq $_ } @LIFECYCLES_TO_FLUSH;
             next unless (
                 $service->can('has_instance') && $service->has_instance ||
-                $service->can('instances')    && values $service->instances
+                $service->can('instances')    && values %{$service->instances}
             );
 
             $service->flush_instance  if $service->can('flush_instance');
