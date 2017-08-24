@@ -20,7 +20,7 @@ before get => sub {
     my $self = shift;
 
     # Assume we've already done this if any instance exists
-    return if values $self->instances;
+    return if values %{$self->instances};
 
     Module::Runtime::require_module($FLUSHER_ROLE);
 
